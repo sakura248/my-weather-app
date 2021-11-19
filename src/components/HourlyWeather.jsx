@@ -1,40 +1,49 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import HourlyWeatherDetails from './HourlyWeatherDetails'
 
 
-const HourlyWeather = () => {
-    const [lat, setLat] = useState([]);
-    const [long, setLong] = useState([]);
+const HourlyWeather = ({city}) => {
+    // const [lat, setLat] = useState([]);
+    // const [long, setLong] = useState([]);
     const [data, setData] = useState([])
 
+    // const {city, setCity} = useContext(citySetting)
+
     useEffect(() => {
-        const fetchData = async() => {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                setLat(position.coords.latitude);
-                setLong(position.coords.longitude);
-            });
+        const fetchData = async () => {
+            // navigator.geolocation.getCurrentPosition(function(position) {
+            //     setLat(position.coords.latitude);
+            //     setLong(position.coords.longitude);
+            // });
             
-            await fetch(`${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
+            // await fetch(`${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
+            await fetch(`${process.env.REACT_APP_API_URL}/forecast/?q=${city}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
             .then(res => res.json())
             .then(result => {
-                setData(result)
-                console.log("hour: ", result);
+                if(result.cod === '200') {
+                  setData(result)
+                }
+                console.log("hour result : ", result)
             })
+            .catch(error =>
+                console.log(error)
+            )
         }
-        fetchData();
-        // console.log(lat)
-        }, [lat, long]);
+        if(city){
+            fetchData();
+        }
+        // }, [lat, long]);
+    }, [city]);
+
     
         
     return (
         <div>
-            {(typeof data.main != 'undefined') ? (
+            {(data.length !== 0) ? (
                 <HourlyWeatherDetails hourlyWeatherData={data}/>
             ): (
-                <div>よみこみエラー</div>
+                <div>error</div>
             )}
-            <p>hogehogehogheo</p>
-            <p>nande~~~~~~~~~~</p>
             
     </div>
     )

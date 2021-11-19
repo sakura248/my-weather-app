@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap');
+
+.city-name {
+    font-family: Fredoka One;
+    font-size: 3rem;
+}
+
+.current-date, .city-name{
+    text-align: right;
+}
+
+
+@media only screen and  (max-width:499px) { 
+    
+    .city-name{
+        font-size: 1.5rem;
+    }
+    .current-date, .city-name {
+        text-align: center;
+    }
+    
+}
+
