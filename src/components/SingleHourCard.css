@@ -24,8 +24,11 @@
 
 .vertical-card .max-temp {
     margin-bottom: 0px;
-    margin-top: 40px;
+    margin-top: 10px;
+}
 
+.vertical-card .min-temp {
+    margin-top: 10px;
 }
 
 .vertical-single-card {

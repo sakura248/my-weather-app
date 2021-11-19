@@ -1,11 +1,18 @@
 import React from 'react'
 import './CurrentWeatherDetail.css'
+import moment from 'moment'
 
 const CurrentWeatherDetails = ({weatherData}) => {
 
+    const dateConvert = (unixData) => {
+        let time = moment.unix(unixData).format('hh:mm')
+        console.log(time)
+        return time 
+    } 
+
     const HandleOutfit =(temp)=>{
-        if( temp > 25) {
-            return "coat"
+        if( temp >= 25) {
+            return "t-shirt"
         } else if (temp > 19) {
             return "long-sleeve"
         } else if (temp > 15) {
@@ -47,9 +54,13 @@ const CurrentWeatherDetails = ({weatherData}) => {
                                 <p className="grid-int">{weatherData.wind.speed}<span className="unit">km/h</span></p>
                         </div>
                         <div className="main-grid">
+                            <p className="grid-title">Sunset</p>
+                            <p className="grid-int">{dateConvert(weatherData.sys.sunset)}</p>
+                        </div>
+                        {/* <div className="main-grid">
                             <p className="grid-title">UV</p>
                             <p className="grid-int">?????</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

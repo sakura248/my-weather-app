@@ -12,7 +12,7 @@ const HourlyWeatherDetails = ({hourlyWeatherData}) => {
 
     return (
         <div>
-            <h2>Hourly data forecast</h2>
+            <h2>3 hour forecast</h2>
             <div className="vertical-card">
                 {
                     Object.keys(hourlyWeatherData.list).slice(0,6).map((threeHourData,index) => (

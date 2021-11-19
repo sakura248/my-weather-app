@@ -17,12 +17,11 @@ h2 {
 .left-side {
     width: 70%;
     background-color: #F8F3EA;
-    padding: 30px;
+    height: 100vh;
 }
 
 .right-side {
     width: 30%;
-    padding: 30px;
 }
 
 .max-temp, .min-temp, .current-temp {
@@ -45,6 +44,7 @@ color: #528DFF;
     .right-side, .left-side{
         width: 100%;
         padding: 0;
+        height: auto;
     }
 
     h2 {
