@@ -23,6 +23,7 @@
     }
     .current-date, .city-name {
         text-align: center;
+        margin: 0;
     }
     
 }
