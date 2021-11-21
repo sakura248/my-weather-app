@@ -31,7 +31,6 @@ function App() {
             await fetch(`${process.env.REACT_APP_API_URL}/weather/?q=${city}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
             .then(res => res.json())
             .then(result => {
-                  console.log("result: ",result)
                 if(result.cod === '404') {
                   // setCity(result.message)
                   // setErr("City Not Found")

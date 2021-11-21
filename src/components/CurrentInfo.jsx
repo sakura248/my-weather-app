@@ -5,6 +5,7 @@ import './CurrentInfo.css'
 import MediaQuery from 'react-responsive'
 
 const CurrentInfo = ({weatherData}) => {
+    console.log(weatherData.sys.country)
     
     const Current = moment().format('MMM DD hh:mma')
     // const Current = moment().utc().format('MMM DD hh:mma')
@@ -22,15 +23,13 @@ const CurrentInfo = ({weatherData}) => {
         <div>
             
             <MediaQuery query="(max-width: 499px)">
-                <h1 className="city-name">{weatherData.name}</h1>
-                {/* <span>{weatherData.sys.country}</span>
-                {console.log(weatherData.sys.country)} */}
+                <h1 className="city-name">{weatherData.name}, <span className="country">{weatherData.sys.country}</span></h1>
             </MediaQuery>
             <MediaQuery query="(min-width: 500px)">
             {/* {console.log(dateConvert(weatherData.timezone)} */}
                 <p className="current-date">{Current}</p>
-                <h1 className="city-name">{weatherData.name}</h1>
-
+                <h1 className="city-name">{weatherData.name}, <span className="country">{weatherData.sys.country}</span></h1>
+                
             </MediaQuery>
         </div>
     )

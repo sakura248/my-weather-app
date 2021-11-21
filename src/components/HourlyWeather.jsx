@@ -23,7 +23,6 @@ const HourlyWeather = ({city}) => {
                 if(result.cod === '200') {
                   setData(result)
                 }
-                console.log("hour result : ", result)
             })
             .catch(error =>
                 console.log(error)

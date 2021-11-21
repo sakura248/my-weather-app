@@ -6,7 +6,7 @@ const CurrentWeatherDetails = ({weatherData}) => {
 
     const dateConvert = (unixData) => {
         let time = moment.unix(unixData).format('hh:mm')
-        console.log(time)
+        // console.log(time)
         return time 
     } 
 
