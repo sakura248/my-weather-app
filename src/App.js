@@ -4,9 +4,9 @@ import MediaQuery from 'react-responsive'
 import './App.css'
 
 import CurrentInfo from './components/CurrentInfo'
-import HourlyWeather from './components/HourlyWeather'
+// import HourlyWeather from './components/HourlyWeather'
 import CurrentWeatherDetails from './components/CurrentWeatherDetails'
-import SearchCityForm from './components/SearchCityForm'
+// import SearchCityForm from './components/SearchCityForm'
 
 function App() {
     const [lat, setLat] = useState([]);
