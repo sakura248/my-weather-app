@@ -66,7 +66,7 @@ function App() {
         city && <HourlyWeather city={city} />
         ): ( */}
             <div>reading error</div>
-        )}
+        {/* )} */}
       </div>
       <div className="right-side">
         <MediaQuery query="(min-width: 500px)">
