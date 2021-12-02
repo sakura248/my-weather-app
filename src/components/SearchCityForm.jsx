@@ -17,6 +17,7 @@ const SearchCityForm = (props) => {
     } 
 
     const SearchCity = (city) => {
+        console.log(city)
         axios
             .get(
                 `${process.env.REACT_APP_API_URL}/weather/?q=${
@@ -29,6 +30,7 @@ const SearchCityForm = (props) => {
             // }
             if(res.statusText === 'OK') {
                 setData(res.data)
+                console.log(data)
             }
             setQuery('')
             })
