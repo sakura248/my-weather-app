@@ -20,21 +20,23 @@ export function App() {
     // const [err, setErr] = useState('')
     useEffect(() => {
       const fetchData = async () => {
-          navigator.geolocation.getCurrentPosition(function(position) {
-              setLat(position.coords.latitude);
-              setLong(position.coords.longitude);
-          });
-          
-          await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setLat(position.coords.latitude);
+            setLong(position.coords.longitude);
+            console.log("位置情報", lat)
+        });
+
+          axios.get(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
           // await fetch(`${process.env.REACT_APP_API_URL}/weather/?q=${city}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
-          .then(res => res.json())
+          .then(res => console.log("res: ", res))
           .then(result => {
-              if(result.cod === '404') {
+              if(result.data.cod === '404') {
 
                 alert("City Not Found!");
               }
-              if(result.cod === 200) {
+              if(result.data.cod === 200) {
                 setData(result)
+                console.log(result)
               }
           })
           .catch(error => {
@@ -43,6 +45,8 @@ export function App() {
       }
     fetchData();
     }, [lat, long]);
+    // use "useEffect" once after first reding
+    // }, []);
 
 
 
