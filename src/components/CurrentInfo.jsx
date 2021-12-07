@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+import dayjs from 'dayjs';
 import 'moment-timezone'
 import './CurrentInfo.css'
 import MediaQuery from 'react-responsive'
@@ -7,7 +7,7 @@ import MediaQuery from 'react-responsive'
 const CurrentInfo = ({weatherData}) => {
     // console.log(weatherData.sys.country)
     
-    const Current = moment().format('MMM DD hh:mma')
+    const Current = dayjs().format('MMM DD hh:mma')
     // const Current = moment().utc().format('MMM DD hh:mma')
     // console.log('time', (moment.utc() + weatherData.timezone).format('MMM DD hh:mma') )
 
