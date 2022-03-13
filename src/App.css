@@ -1,54 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap");
 
 body {
-    
+  margin: 0;
 }
 
 .App {
-    display: flex;
-    background-color: #E9EBF0;
+  display: flex;
+  background-color: #e9ebf0;
 }
 
 h2 {
-    font-family: Fredoka One;
-    margin-left: 40px
+  font-family: Fredoka One;
+  margin-left: 40px;
 }
 
 .left-side {
-    width: 70%;
-    background-color: #F8F3EA;
-    height: 100vh;
+  width: 70%;
+  background-color: #f8f3ea;
+  height: 100vh;
 }
 
 .right-side {
-    width: 30%;
+  width: 30%;
 }
 
-.max-temp, .min-temp, .current-temp {
-    font-family: Fredoka One;
-    font-size: 3rem;
+.max-temp,
+.min-temp,
+.current-temp {
+  font-family: Fredoka One;
+  font-size: 3rem;
 }
 
-.max-temp{
-color: #FF5252;
+.max-temp {
+  color: #ff5252;
 }
 
 .min-temp {
-color: #528DFF;
+  color: #528dff;
 }
 
 @media only screen and (max-width: 499px) {
-    .App {
-        flex-direction: column;
-    }
-    .right-side, .left-side{
-        width: 100%;
-        padding: 0;
-        height: auto;
-    }
+  .App {
+    flex-direction: column;
+  }
+  .right-side,
+  .left-side {
+    width: 100%;
+    padding: 0;
+    height: auto;
+  }
 
-    h2 {
-        text-align: center;
-        margin: 50px 0 0 0;
-    }
+  h2 {
+    text-align: center;
+    margin: 50px 0 0 0;
+  }
 }
