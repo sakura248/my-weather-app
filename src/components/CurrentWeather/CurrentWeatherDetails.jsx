@@ -5,7 +5,6 @@ import moment from "moment";
 const CurrentWeatherDetails = ({ weatherData }) => {
   const dateConvert = (unixData) => {
     let time = moment.unix(unixData).format("hh:mm");
-    // console.log(time)
     return time;
   };
 
@@ -34,6 +33,7 @@ const CurrentWeatherDetails = ({ weatherData }) => {
                 alt={weatherData.weather[0].icon}
               />
             </div>
+
             <div className="kv-info">
               <p> {weatherData.weather[0].description}</p>
               <p className="current-temp">{weatherData.main.temp}°</p>
@@ -66,10 +66,6 @@ const CurrentWeatherDetails = ({ weatherData }) => {
               <p className="grid-title">Sunset</p>
               <p className="grid-int">{dateConvert(weatherData.sys.sunset)}</p>
             </div>
-            {/* <div className="main-grid">
-                            <p className="grid-title">UV</p>
-                            <p className="grid-int">?????</p>
-                        </div> */}
           </div>
         </div>
 

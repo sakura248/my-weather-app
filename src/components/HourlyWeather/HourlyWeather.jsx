@@ -1,41 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
-import HourlyWeatherDetails from "./HourlyWeatherDetails";
-import { GeoContext } from "../../App";
+import React from "react";
+import moment from "moment";
+import SingleHourCard from "./SingleHourCard";
 
-const HourlyWeather = () => {
-  const { lat, long } = useContext(GeoContext);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // navigator.geolocation.getCurrentPosition(function(position) {
-      //     setLat(position.coords.latitude);
-      //     setLong(position.coords.longitude);
-      // });
-
-      await fetch(
-        `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.cod === "200") {
-            setData(result);
-          }
-        })
-        .catch((error) => console.log(error));
-    };
-    if (lat) {
-      fetchData();
-    }
-  }, [lat, long]);
+const HourlyWeather = ({ hourlyWeatherData }) => {
+  const dateConvert = (unixData) => {
+    let threeHour = moment(unixData).format("ha");
+    return threeHour;
+  };
 
   return (
     <div>
-      {data.length !== 0 ? (
-        <HourlyWeatherDetails hourlyWeatherData={data} />
-      ) : (
-        <div>error</div>
-      )}
+      <h2>3 hour forecast</h2>
+      <div className="vertical-card">
+        {Object.keys(hourlyWeatherData.list)
+          .slice(0, 6)
+          .map((threeHourData, index) => (
+            <SingleHourCard
+              key={index}
+              date={dateConvert(hourlyWeatherData.list[index].dt_txt)}
+              src={`${process.env.PUBLIC_URL}/assets/weather-icons/${hourlyWeatherData.list[index].weather[0].icon}.png`}
+              maxTemp={hourlyWeatherData.list[index].main.temp_max}
+              minTemp={hourlyWeatherData.list[index].main.temp_min}
+            />
+          ))}
+      </div>
     </div>
   );
 };

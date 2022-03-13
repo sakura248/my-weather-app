@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import MediaQuery from "react-responsive";
 import axios from "axios";
 
 import "./App.css";
 
 import CurrentInfo from "./components/CurrentInfo/CurrentInfo";
-import HourlyWeather from "./components/HourlyWeather/HourlyWeather";
+import HourlyWeatherList from "./components/HourlyWeather/HourlyWeatherList";
+import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 import CurrentWeatherDetails from "./components/CurrentWeather/CurrentWeatherDetails";
 import SearchCityForm from "./components/Search/SearchCityForm";
 
 export const GeoContext = createContext();
 
 export function App() {
-  const [lat, setLat] = useState();
+  const [lat, setLat] = useState([]);
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
   const [city, setCity] = useState("");
@@ -88,7 +89,7 @@ export function App() {
         )}
         <GeoContext.Provider value={{ lat, long }}>
           {typeof data.main != "undefined" ? (
-            data && <HourlyWeather city={data} />
+            data && <HourlyWeatherList city={data} />
           ) : (
             <div>reading error</div>
           )}
@@ -101,6 +102,7 @@ export function App() {
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
+          {/* <WeeklyWeatherList /> */}
         </MediaQuery>
       </div>
     </div>
