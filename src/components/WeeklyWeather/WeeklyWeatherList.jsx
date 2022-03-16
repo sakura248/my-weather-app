@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import WeeklyWeather from "./WeeklyWeather";
+import React, { useContext, useEffect, useState } from "react";
 import { GeoContext } from "../../App";
+import WeeklyWeather from "./WeeklyWeather";
 
 const WeeklyWeatherList = () => {
   const { lat, long } = useContext(GeoContext);

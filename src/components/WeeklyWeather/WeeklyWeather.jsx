@@ -1,16 +1,18 @@
-import React from "react";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-unused-vars */
 import moment from "moment";
+import React from "react";
 import SingleCard from "./SingleCard";
 
-const WeeklyWeather = ({ hourlyWeatherData }) => {
+function WeeklyWeather({ hourlyWeatherData }) {
   const dateConvert = (unixData) => {
-    let threeHour = moment(unixData).format("ha");
+    const threeHour = moment(unixData).format("ha");
     return threeHour;
   };
 
   return (
     <div>
-      {/* <div className="vertical-card">
+      <div className="vertical-card">
         {Object.keys(hourlyWeatherData.list)
           .slice(0, 6)
           .map((threeHourData, index) => (
@@ -22,9 +24,9 @@ const WeeklyWeather = ({ hourlyWeatherData }) => {
               minTemp={hourlyWeatherData.list[index].main.temp_min}
             />
           ))}
-      </div> */}
+      </div>
     </div>
   );
-};
+}
 
 export default WeeklyWeather;

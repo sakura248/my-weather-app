@@ -1,10 +1,11 @@
+/* eslint-disable react/no-array-index-key */
 import React from "react";
 import moment from "moment";
 import SingleHourCard from "./SingleHourCard";
 
-const HourlyWeather = ({ hourlyWeatherData }) => {
+function HourlyWeather({ hourlyWeatherData }) {
   const dateConvert = (unixData) => {
-    let threeHour = moment(unixData).format("ha");
+    const threeHour = moment(unixData).format("ha");
     return threeHour;
   };
 
@@ -26,6 +27,6 @@ const HourlyWeather = ({ hourlyWeatherData }) => {
       </div>
     </div>
   );
-};
+}
 
 export default HourlyWeather;

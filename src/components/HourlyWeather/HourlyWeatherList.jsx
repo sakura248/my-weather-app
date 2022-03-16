@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import HourlyWeather from "./HourlyWeather";
+import React, { useContext, useEffect, useState } from "react";
 import { GeoContext } from "../../App";
+import HourlyWeather from "./HourlyWeather";
 
 const HourlyWeatherList = () => {
   const { lat, long } = useContext(GeoContext);

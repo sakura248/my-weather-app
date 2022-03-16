@@ -1,14 +1,12 @@
-import React, { useState, useEffect, createContext } from "react";
-import MediaQuery from "react-responsive";
 import axios from "axios";
-
+import React, { createContext, useEffect, useState } from "react";
+import MediaQuery from "react-responsive";
 import "./App.css";
-
 import CurrentInfo from "./components/CurrentInfo/CurrentInfo";
-import HourlyWeatherList from "./components/HourlyWeather/HourlyWeatherList";
-import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 import CurrentWeatherDetails from "./components/CurrentWeather/CurrentWeatherDetails";
+import HourlyWeatherList from "./components/HourlyWeather/HourlyWeatherList";
 import SearchCityForm from "./components/Search/SearchCityForm";
+import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 
 export const GeoContext = createContext();
 
@@ -18,11 +16,13 @@ export function App() {
   const [data, setData] = useState([]);
   const [city, setCity] = useState("");
 
+  dog = "cat";
+
   useEffect(() => {
-    const firstGetCity = async () => {
-      navigator.geolocation.getCurrentPosition(async function (position) {
-        const lat = await position.coords.latitude;
-        const long = await position.coords.longitude;
+    const firstGetCity = () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
         setLat(lat);
         setLong(long);
         console.log("location info", lat, long);
@@ -102,7 +102,7 @@ export function App() {
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          {/* <WeeklyWeatherList /> */}
+          <WeeklyWeatherList />
         </MediaQuery>
       </div>
     </div>
