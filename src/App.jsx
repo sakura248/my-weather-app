@@ -15,15 +15,20 @@ export function App() {
   const [searchedData, setSearchedData] = useState([]);
   const [city, setCity] = useState("");
 
+  const [isLoading, setIsloading] = useState(false);
+
   useEffect(() => {
     const firstGetCity = async () => {
-      navigator.geolocation.getCurrentPosition((position) => {
+      navigator.geolocation.getCurrentPosition(async (position) => {
         const currentLat = position.coords.latitude;
         const currentLong = position.coords.longitude;
+
+        if (location.lat) {
+          setIsloading(true);
+        }
+        console.log("location info", location, location.lat, location.long);
+
         setLocation({ ...location, lat: currentLat, long: currentLong });
-        // setLat(currentLat);
-        // setLong(currentLong);
-        console.log("location info", location.lat, location.long);
       });
       const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${location.lat}&lon=${location.long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
       const result = await fetch(url);
@@ -71,6 +76,8 @@ export function App() {
   return (
     <div className="App">
       <div className="left-side">
+        {!isLoading ? <p>Loading</p> : <p>Loaded</p>}
+
         <MediaQuery query="(max-width: 499px)">
           <SearchCityForm
             searchSetCity={searchSetCity}

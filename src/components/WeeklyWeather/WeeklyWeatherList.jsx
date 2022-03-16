@@ -9,8 +9,8 @@ function WeeklyWeatherList({ location }) {
   useEffect(() => {
     const fetchData = async () => {
       const url = `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-      const result = await fetch(url);
       console.log(url);
+      const result = await fetch(url);
       try {
         const json = await result.json();
         console.log(json);
