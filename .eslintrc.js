@@ -5,19 +5,18 @@ module.exports = {
   },
   extends: [
     "airbnb",
-    "prettier",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "prettier",
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    // "ecmaVersion": "latest",
+    // ecmaVersion: 2017,
     sourceType: "module",
-    ecmaVersion: 6,
   },
-  plugins: ["react"],
+  plugins: ["react", "react-hooks", "prettier"],
   rules: {
     "prettier/prettier": "error",
     "react/prop-types": "off",
