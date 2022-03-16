@@ -1,10 +1,9 @@
-import React from "react";
-import dayjs from "dayjs";
 import "moment-timezone";
-import "./CurrentInfo.css";
+import React from "react";
 import MediaQuery from "react-responsive";
+import "./CurrentInfo.css";
 
-const CurrentInfo = ({ weatherData }) => {
+function CurrentInfo({ weatherData }) {
   // const Current = dayjs().format("MMM DD hh:mma");
 
   return (
@@ -20,6 +19,6 @@ const CurrentInfo = ({ weatherData }) => {
       </MediaQuery>
     </div>
   );
-};
+}
 
 export default CurrentInfo;

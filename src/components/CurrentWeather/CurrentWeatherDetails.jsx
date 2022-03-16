@@ -1,24 +1,25 @@
+import moment from "moment";
 import React from "react";
 import "./CurrentWeatherDetail.css";
-import moment from "moment";
 
-const CurrentWeatherDetails = ({ weatherData }) => {
+function CurrentWeatherDetails({ weatherData }) {
   const dateConvert = (unixData) => {
-    let time = moment.unix(unixData).format("hh:mm");
+    const time = moment.unix(unixData).format("hh:mm");
     return time;
   };
 
   const HandleOutfit = (temp) => {
-    if (temp >= 25) {
-      return "t-shirt";
-    } else if (temp > 19) {
-      return "long-sleeve";
-    } else if (temp > 15) {
-      return "jacket";
-    } else if (temp > 11) {
-      return "knit";
-    } else {
-      return "coat";
+    switch (temp) {
+      case temp >= 25:
+        return "t-shirt";
+      case temp > 19 && temp < 25:
+        return "long-sleeve";
+      case temp > 15 && temp >= 11:
+        return "jacket";
+      case temp > 11 && temp < 15:
+        return "knit";
+      default:
+        return "coat";
     }
   };
 
@@ -94,6 +95,6 @@ const CurrentWeatherDetails = ({ weatherData }) => {
       </div>
     </div>
   );
-};
+}
 
 export default CurrentWeatherDetails;

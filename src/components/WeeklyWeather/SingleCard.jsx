@@ -1,7 +1,7 @@
 import React from "react";
 import "./WeeklyWeather.css";
 
-function SingleCard() {
+function SingleCard({ date, src, maxTemp, minTemp }) {
   return (
     <div className="horizontal-single-card">
       <p className="day">{date}</p>

@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./SingleHourCard.css";
+
 export default function SingleHourCard({ date, src, maxTemp, minTemp }) {
   return (
     <div>
