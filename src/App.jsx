@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import MediaQuery from "react-responsive";
+import GetCityWeather from "./api/GetCityWeather";
 import GetLocation from "./api/GetLocation";
 import "./App.css";
 import CurrentInfo from "./components/CurrentInfo/CurrentInfo";
@@ -13,32 +14,16 @@ import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 export const GeoContext = createContext();
 
 export function App() {
-  // const [location, setLocation] = useState({
-  //   lat: "",
-  //   long: "",
-  // });
   const [searchedData, setSearchedData] = useState([]);
   const [city, setCity] = useState("");
 
   const [isLoading, setIsloading] = useState(false);
-  const { location } = GetLocation();
+  const { fetchData, data } = GetCityWeather();
+  const location = GetLocation();
 
   useEffect(() => {
     const firstGetCity = async () => {
-      const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${location.lat}&lon=${location.long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-      const result = await fetch(url);
-      try {
-        const json = await result.json();
-        console.log(json);
-        if (json.cod === "404") {
-          alert("City Not Found!");
-        }
-        if (json.cod === 200) {
-          setSearchedData(json);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+      await fetchData(location.lat, location.long);
     };
     firstGetCity();
   }, [location]);
@@ -77,17 +62,17 @@ export function App() {
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <CurrentInfo weatherData={searchedData} className="current-info" />
+          <CurrentInfo weatherData={data} className="current-info" />
         </MediaQuery>
-        {typeof searchedData.main !== "undefined" ? (
-          <CurrentWeatherDetails weatherData={searchedData} />
+        {typeof data.main !== "undefined" ? (
+          <CurrentWeatherDetails weatherData={data} />
         ) : (
           <div>reading error</div>
         )}
         <GeoContext.Provider value={location}>
           {typeof searchedData.main !== "undefined" ? (
             searchedData && (
-              <HourlyWeatherList city={searchedData} location={location} />
+              <HourlyWeatherList city={data} location={location} />
             )
           ) : (
             <div>reading error</div>
@@ -96,7 +81,7 @@ export function App() {
       </div>
       <div className="right-side">
         <MediaQuery query="(min-width: 500px)">
-          <CurrentInfo weatherData={searchedData} className="current-info" />
+          <CurrentInfo weatherData={data} className="current-info" />
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
