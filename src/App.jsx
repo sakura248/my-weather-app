@@ -26,9 +26,7 @@ export function App() {
   useEffect(() => {
     const firstGetCity = async () => {
       const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${location.lat}&lon=${location.long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-
       const result = await fetch(url);
-      console.log("result", result);
       try {
         const json = await result.json();
         console.log(json);
