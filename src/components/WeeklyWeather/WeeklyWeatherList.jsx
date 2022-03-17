@@ -1,39 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import GetCityWeather from "../../api/GetCityWeather";
+import GetLocation from "../../api/GetLocation";
+import WeeklyWeather from "./WeeklyWeather";
 
-// eslint-disable-next-line no-unused-vars
-function WeeklyWeatherList({ location }) {
-  // const { lat, long } = useContext(GeoContext);
-  // const { lat, long } = location;
-  // const [data, setData] = useState([]);
+function WeeklyWeatherList() {
+  const { fetchData, data } = GetCityWeather();
+  const location = GetLocation();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const url = `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-  //     const result = await fetch(url);
-  //     try {
-  //       const json = await result.json();
-  //       // console.log(json);
-  //       if (json.cod === "200") {
-  //         setData(json);
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   if (lat) {
-  //     fetchData();
-  //   }
-  // }, [lat, long]);
-  // }, []);
+  useEffect(() => {
+    const fetchForecast = async () => {
+      await fetchData(location.lat, location.long, "forecast");
+    };
+    fetchForecast();
+  }, [location]);
 
   return (
     <div>
-      hoge
-      {/* {data.length !== 0 ? (
+      <h2>Weekly Forecast</h2>
+      {data.length !== 0 ? (
         <WeeklyWeather WeeklyWeatherData={data} />
       ) : (
         <div>error</div>
-      )} */}
+      )}
     </div>
   );
 }

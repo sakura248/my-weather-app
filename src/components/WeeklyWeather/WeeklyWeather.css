@@ -1,10 +1,56 @@
 .horizontal-single-card {
-  width: 130px;
+  width: 90%;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-around;
   margin: 5px;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.day-img-wrapper {
+  height: 100px;
+  position: relative;
+}
+
+.day-image {
+  position: absolute;
+  max-height: 65px;
+  max-width: 65px;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.horizontal-card {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizontal-card .max-temp,
+.horizontal-card .min-temp {
+  font-size: 1.5rem;
+}
+
+/* .horizontal-card .max-temp {
+  margin-bottom: 0px;
+  margin-top: 10px;
+} */
+
+/* .horizontal-card .min-temp {
+  margin-top: 10px;
+} */
+
+@media only screen and (max-width: 499px) {
+  .horizontal-card {
+    margin-bottom: 50px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    justify-content: normal;
+    padding: 20px;
+  }
 }
