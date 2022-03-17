@@ -23,7 +23,7 @@ export function App() {
 
   useEffect(() => {
     const firstGetCity = async () => {
-      await fetchData(location.lat, location.long);
+      await fetchData(location.lat, location.long, "weather");
     };
     firstGetCity();
   }, [location]);
@@ -69,15 +69,10 @@ export function App() {
         ) : (
           <div>reading error</div>
         )}
-        <GeoContext.Provider value={location}>
-          {typeof searchedData.main !== "undefined" ? (
-            searchedData && (
-              <HourlyWeatherList city={data} location={location} />
-            )
-          ) : (
-            <div>reading error</div>
-          )}
-        </GeoContext.Provider>
+        {/* <GeoContext.Provider value={location}> */}
+        <HourlyWeatherList city={data} />
+
+        {/* </GeoContext.Provider> */}
       </div>
       <div className="right-side">
         <MediaQuery query="(min-width: 500px)">
