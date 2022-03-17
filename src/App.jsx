@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import MediaQuery from "react-responsive";
+import GetLocation from "./api/GetLocation";
 import "./App.css";
 import CurrentInfo from "./components/CurrentInfo/CurrentInfo";
 import CurrentWeatherDetails from "./components/CurrentWeather/CurrentWeatherDetails";
@@ -11,24 +13,23 @@ import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 export const GeoContext = createContext();
 
 export function App() {
-  const [location, setLocation] = useState({});
+  // const [location, setLocation] = useState({
+  //   lat: "",
+  //   long: "",
+  // });
   const [searchedData, setSearchedData] = useState([]);
   const [city, setCity] = useState("");
 
+  const [isLoading, setIsloading] = useState(false);
+  const { location } = GetLocation();
+
   useEffect(() => {
     const firstGetCity = async () => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const currentLat = position.coords.latitude;
-        const currentLong = position.coords.longitude;
-        setLocation({ ...location, lat: currentLat, long: currentLong });
-        // setLat(currentLat);
-        // setLong(currentLong);
-        console.log("location info", location.lat, location.long);
-      });
       const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${location.lat}&lon=${location.long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
       const result = await fetch(url);
       try {
         const json = await result.json();
+        console.log(json);
         if (json.cod === "404") {
           alert("City Not Found!");
         }
@@ -39,10 +40,8 @@ export function App() {
         console.log(err);
       }
     };
-    if (location) {
-      firstGetCity();
-    }
-  }, []);
+    firstGetCity();
+  }, [location]);
 
   const searchSetCity = async (e) => {
     e.preventDefault();
@@ -71,6 +70,8 @@ export function App() {
   return (
     <div className="App">
       <div className="left-side">
+        {!isLoading ? <p>Loading</p> : <p>Loaded</p>}
+
         <MediaQuery query="(max-width: 499px)">
           <SearchCityForm
             searchSetCity={searchSetCity}
