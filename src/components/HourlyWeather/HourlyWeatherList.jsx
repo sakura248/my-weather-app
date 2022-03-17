@@ -4,15 +4,11 @@ import GetLocation from "../../api/GetLocation";
 import HourlyWeather from "./HourlyWeather";
 
 function HourlyWeatherList() {
-  // const { lat, long } = useContext(GeoContext);
-
-  // const [data, setData] = useState([]);
   const { fetchData, data } = GetCityWeather();
   const location = GetLocation();
 
   useEffect(() => {
     const fetchForecast = async () => {
-      console.log(location.lat, location.long);
       await fetchData(location.lat, location.long, "forecast");
     };
     fetchForecast();
@@ -20,6 +16,7 @@ function HourlyWeatherList() {
 
   return (
     <div>
+      <h2>3 hour forecast</h2>
       {data.length !== 0 ? (
         <HourlyWeather hourlyWeatherData={data} />
       ) : (

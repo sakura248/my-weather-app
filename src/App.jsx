@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import MediaQuery from "react-responsive";
+import GetCityName from "./api/GetCityName";
 import GetCityWeather from "./api/GetCityWeather";
 import GetLocation from "./api/GetLocation";
 import "./App.css";
@@ -15,23 +16,27 @@ export const GeoContext = createContext();
 
 export function App() {
   const [searchedData, setSearchedData] = useState([]);
-  const [city, setCity] = useState("");
+  const [newCity, setNewCity] = useState("");
 
   const [isLoading, setIsloading] = useState(false);
+  const { fetchCity, city } = GetCityName();
   const { fetchData, data } = GetCityWeather();
   const location = GetLocation();
 
   useEffect(() => {
     const firstGetCity = async () => {
-      await fetchData(location.lat, location.long, "weather");
+      await fetchCity(location.lat, location.long);
+      await fetchData(location.lat, location.long);
     };
     firstGetCity();
   }, [location]);
 
+  console.log(city);
+
   const searchSetCity = async (e) => {
     e.preventDefault();
-    const newCity = document.querySelector("#cityName").value;
-    setCity(newCity);
+    const c = document.querySelector("#cityName").value;
+    setNewCity(c);
     console.log("newCity : ", newCity);
 
     await axios
@@ -62,26 +67,23 @@ export function App() {
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <CurrentInfo weatherData={data} className="current-info" />
+          <CurrentInfo cityName={city} className="current-info" />
         </MediaQuery>
         {typeof data.main !== "undefined" ? (
-          <CurrentWeatherDetails weatherData={data} />
+          <CurrentWeatherDetails weatherData={data.current} />
         ) : (
           <div>reading error</div>
         )}
-        {/* <GeoContext.Provider value={location}> */}
         <HourlyWeatherList city={data} />
-
-        {/* </GeoContext.Provider> */}
       </div>
       <div className="right-side">
         <MediaQuery query="(min-width: 500px)">
-          <CurrentInfo weatherData={data} className="current-info" />
+          <CurrentInfo cityName={city} className="current-info" />
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <WeeklyWeatherList location={location} />
+          <WeeklyWeatherList city={data} />
         </MediaQuery>
       </div>
     </div>
