@@ -12,7 +12,6 @@ function HourlyWeatherList() {
 
   useEffect(() => {
     const fetchForecast = async () => {
-      console.log(location.lat, location.long);
       await fetchData(location.lat, location.long, "forecast");
     };
     fetchForecast();
