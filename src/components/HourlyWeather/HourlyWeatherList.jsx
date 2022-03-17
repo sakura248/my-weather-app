@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import GetCityWeather from "../../api/GetCityWeather";
+import GetLocation from "../../api/GetLocation";
 import HourlyWeather from "./HourlyWeather";
 
-function HourlyWeatherList({ location }) {
+function HourlyWeatherList() {
   // const { lat, long } = useContext(GeoContext);
-  const { lat, long } = location;
-  console.log("hourly weather component ", lat, long);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const { fetchData, data } = GetCityWeather();
+  const location = GetLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-      const result = await fetch(url);
-
-      try {
-        const json = await result.json();
-        console.log(json);
-        if (result.cod === "200") {
-          setData(json);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    const fetchForecast = async () => {
+      console.log(location.lat, location.long);
+      await fetchData(location.lat, location.long, "forecast");
     };
-    if (lat) {
-      fetchData();
-    }
-  }, [lat, long]);
+    fetchForecast();
+  }, [location]);
 
   return (
     <div>
