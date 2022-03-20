@@ -8,8 +8,8 @@ function SingleCard({ date, src, maxTemp, minTemp }) {
       <div className="day-img-wrapper">
         <img className="day-image" src={src} alt="forecast" />
       </div>
-      <p className="max-temp">{maxTemp}</p>
-      <p className="min-temp">{minTemp}</p>
+      <p className="max-temp">{maxTemp}°</p>
+      <p className="min-temp">{minTemp}°</p>
     </div>
   );
 }

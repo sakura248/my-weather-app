@@ -4,7 +4,7 @@ import "./CurrentWeatherDetail.css";
 
 function CurrentWeatherDetails({ weatherData }) {
   const dateConvert = (unixData) => {
-    const time = dayjs.unix(unixData).format("DD hh:mm");
+    const time = dayjs.unix(unixData).format("H:mm");
     return time;
   };
 
@@ -22,8 +22,6 @@ function CurrentWeatherDetails({ weatherData }) {
         return "coat";
     }
   };
-
-  console.log(weatherData);
 
   return (
     <div className="current-info-wrapper">
@@ -61,11 +59,8 @@ function CurrentWeatherDetails({ weatherData }) {
                 </p>
               </div>
               <div className="main-grid">
-                <p className="grid-title">Wind</p>
-                <p className="grid-int">
-                  {weatherData.current.wind_speed}
-                  <span className="unit">km/h</span>
-                </p>
+                <p className="grid-title">UV index</p>
+                <p className="grid-int">{weatherData.daily[0].uvi}</p>
               </div>
               <div className="main-grid">
                 <p className="grid-title">Sunset</p>

@@ -1,0 +1,14 @@
+.arrow-container {
+  width: 35px;
+  height: 60px;
+  background: #2cbdc2;
+  /* display: flex; */
+  position: absolute;
+  border-radius: 15px;
+  right: 10px;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 5px 5px 15px 0px #a1a1a1;
+  box-shadow: 5px 5px 15px 0px #a1a1a1;
+}

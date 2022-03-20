@@ -1,27 +1,21 @@
-
 .form-wrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .search-input {
-    border: none;
-    border-radius: 50px;
-    background: #E9EBF0;
-    box-shadow: inset 4px 4px 8px #b3b5b9,
-    inset -4px -4px 8px #ffffff;
-    padding: 10px 20px;
-    width: 80%;
-    margin: 30px auto;
-    display: block;
+  border: none;
+  border-radius: 50px;
+  background: #e9ebf0;
+  box-shadow: inset 4px 4px 8px #b3b5b9, inset -4px -4px 8px #ffffff;
+  padding: 10px 20px;
+  width: 80%;
+  margin: 30px auto;
+  display: block;
 }
 
-
-
-@media only screen and  (max-width:499px) {
-    .search-input {
-        background: #f8f3ea;
-        box-shadow: inset 4px 4px 8px #d3cfc7,
-        inset -4px -4px 8px #ffffff;
-    }
-    
+@media only screen and (max-width: 999px) {
+  .search-input {
+    background: #f8f3ea;
+    box-shadow: inset 4px 4px 8px #d3cfc7, inset -4px -4px 8px #ffffff;
+  }
 }

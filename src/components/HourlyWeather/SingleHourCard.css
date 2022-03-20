@@ -1,12 +1,12 @@
 .hour-img-wrapper {
-  height: 100px;
+  height: 80px;
   position: relative;
 }
 
 .hour-image {
   position: absolute;
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 80px;
+  max-width: 80px;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
@@ -14,25 +14,17 @@
 
 .vertical-card {
   display: flex;
-  justify-content: space-evenly;
+  cursor: grab;
+  margin-bottom: 15px;
 }
 
-.vertical-card .max-temp,
-.vertical-card .min-temp {
+.vertical-card .temp {
   font-size: 1.5rem;
-}
-
-.vertical-card .max-temp {
-  margin-bottom: 0px;
-  margin-top: 10px;
-}
-
-.vertical-card .min-temp {
-  margin-top: 10px;
+  font-family: Fredoka One;
 }
 
 .vertical-single-card {
-  width: 130px;
+  width: 100px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -42,11 +34,13 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media only screen and (max-width: 499px) {
+.indiana-scroll-container {
+  margin: 20px;
+}
+
+@media only screen and (max-width: 999px) {
   .vertical-card {
     margin-bottom: 50px;
-    overflow-x: auto;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     justify-content: normal;
     padding: 20px;

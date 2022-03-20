@@ -22,7 +22,6 @@ export function App() {
   const { fetchCity, city } = GetCityName();
   const { fetchData, data } = GetCityWeather();
   const location = GetLocation();
-  console.log(location);
 
   useEffect(() => {
     const firstGetCity = async () => {
@@ -56,14 +55,10 @@ export function App() {
       });
   };
 
-  console.log("data", data.length);
-
   return (
     <div className="App">
       <div className="left-side">
-        {!isLoading ? <p>Loading</p> : <p>Loaded</p>}
-
-        <MediaQuery query="(max-width: 499px)">
+        <MediaQuery query="(max-width: 999px)">
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
@@ -73,23 +68,25 @@ export function App() {
         {data.length === 0 ? (
           <p>loading</p>
         ) : (
-          <CurrentWeatherDetails weatherData={data} />
-        )}
-        {data.length === 0 ? (
-          <p>Loading</p>
-        ) : (
-          <HourlyWeatherList weatherData={data} />
+          <>
+            <CurrentWeatherDetails weatherData={data} />
+            <HourlyWeatherList weatherData={data} />
+          </>
         )}
       </div>
       <div className="right-side">
-        <MediaQuery query="(min-width: 500px)">
+        <MediaQuery query="(min-width: 1000px)">
           <CurrentInfo cityName={city} className="current-info" />
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <WeeklyWeatherList weatherData={data} />
         </MediaQuery>
+        {data.length === 0 ? (
+          <p>loading</p>
+        ) : (
+          <WeeklyWeatherList weatherData={data} />
+        )}
       </div>
     </div>
   );

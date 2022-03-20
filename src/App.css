@@ -22,6 +22,7 @@ h2 {
 
 .right-side {
   width: 30%;
+  height: 100vh;
 }
 
 .max-temp,
@@ -39,14 +40,14 @@ h2 {
   color: #528dff;
 }
 
-@media only screen and (max-width: 499px) {
+@media only screen and (max-width: 999px) {
   .App {
     flex-direction: column;
   }
   .right-side,
   .left-side {
     width: 100%;
-    padding: 0;
+    padding: 10px;
     height: auto;
   }
 
