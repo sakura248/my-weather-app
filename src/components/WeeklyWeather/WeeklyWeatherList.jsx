@@ -1,27 +1,11 @@
-import React, { useEffect } from "react";
-import GetCityWeather from "../../api/GetCityWeather";
-import GetLocation from "../../api/GetLocation";
+import React from "react";
 import WeeklyWeather from "./WeeklyWeather";
 
-function WeeklyWeatherList() {
-  const { fetchData, data } = GetCityWeather();
-  const location = GetLocation();
-
-  useEffect(() => {
-    const fetchForecast = async () => {
-      await fetchData(location.lat, location.long, "forecast");
-    };
-    fetchForecast();
-  }, [location]);
-
+function WeeklyWeatherList({ weatherData }) {
   return (
     <div>
       <h2>Weekly Forecast</h2>
-      {data.length !== 0 ? (
-        <WeeklyWeather WeeklyWeatherData={data} />
-      ) : (
-        <div>error</div>
-      )}
+      <WeeklyWeather WeeklyWeatherData={weatherData} />
     </div>
   );
 }

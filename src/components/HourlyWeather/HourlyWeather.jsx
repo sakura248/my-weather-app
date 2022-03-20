@@ -1,17 +1,19 @@
 /* eslint-disable react/no-array-index-key */
-import * as dayjs from "dayjs";
+// import * as dayjs from "dayjs";
 import React from "react";
-import SingleHourCard from "./SingleHourCard";
+// import SingleHourCard from "./SingleHourCard";
 
 function HourlyWeather({ hourlyWeatherData }) {
-  const dateConvert = (unixData) => {
-    const day = dayjs(unixData).format("ha");
-    return day;
-  };
+  // const dateConvert = (unixData) => {
+  //   const day = dayjs(unixData).format("ha");
+  //   return day;
+  // };
+
+  console.log(hourlyWeatherData);
 
   return (
     <div className="vertical-card">
-      {Object.keys(hourlyWeatherData.list)
+      {/* {Object.keys(hourlyWeatherData.list)
         .slice(0, 6)
         .map((index) => (
           <SingleHourCard
@@ -21,7 +23,7 @@ function HourlyWeather({ hourlyWeatherData }) {
             maxTemp={hourlyWeatherData.list[index].main.temp_max}
             minTemp={hourlyWeatherData.list[index].main.temp_min}
           />
-        ))}
+        ))} */}
     </div>
   );
 }

@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import * as dayjs from "dayjs";
 import React from "react";
-import SingleCard from "./SingleCard";
 
 function WeeklyWeather({ WeeklyWeatherData }) {
   const dateConvert = (unixData) => {
@@ -14,7 +13,7 @@ function WeeklyWeather({ WeeklyWeatherData }) {
 
   return (
     <div className="horizontal-card">
-      {Object.keys(WeeklyWeatherData.list)
+      {/* {Object.keys(WeeklyWeatherData.list)
         .slice(0, 6)
         .map((index) => (
           <SingleCard
@@ -24,7 +23,7 @@ function WeeklyWeather({ WeeklyWeatherData }) {
             maxTemp={WeeklyWeatherData.list[index].main.temp_max}
             minTemp={WeeklyWeatherData.list[index].main.temp_min}
           />
-        ))}
+        ))} */}
     </div>
   );
 }
