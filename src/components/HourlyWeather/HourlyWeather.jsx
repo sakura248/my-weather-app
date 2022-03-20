@@ -4,7 +4,7 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import React from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-import ScrollBtn from "./ScrollBtn";
+// import ScrollBtn from "./ScrollBtn";
 import SingleHourCard from "./SingleHourCard";
 
 function HourlyWeather({ hourlyWeatherData }) {
@@ -16,7 +16,7 @@ function HourlyWeather({ hourlyWeatherData }) {
   };
 
   return (
-    <ScrollContainer ignoreElements="#btn">
+    <ScrollContainer ignoreElements="#btn" hideScrollbars="false">
       <div className="vertical-card">
         {!hourlyWeatherData || hourlyWeatherData.cod === "400" ? (
           <p>error</p>
@@ -37,7 +37,9 @@ function HourlyWeather({ hourlyWeatherData }) {
             ))
         )}
       </div>
-      <ScrollBtn id="btn" />
+      {/* {!hourlyWeatherData || hourlyWeatherData.cod === "400" || (
+        <ScrollBtn id="btn" style={{ display: "none" }} />
+      )} */}
     </ScrollContainer>
   );
 }

@@ -10,14 +10,13 @@
 }
 
 .day-img-wrapper {
-  height: 100px;
   position: relative;
 }
 
 .day-image {
   position: absolute;
-  max-height: 65px;
-  max-width: 65px;
+  max-height: 50px;
+  max-width: 50px;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
@@ -32,7 +31,7 @@
 
 .horizontal-card .max-temp,
 .horizontal-card .min-temp {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* .horizontal-card .max-temp {
@@ -44,7 +43,7 @@
   margin-top: 10px;
 } */
 
-@media only screen and (max-width: 499px) {
+@media only screen and (max-width: 999px) {
   .horizontal-card {
     margin-bottom: 50px;
     overflow-x: auto;

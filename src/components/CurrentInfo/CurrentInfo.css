@@ -1,30 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500&display=swap");
 
 .city-name {
-    font-size: 3rem;
-    margin: 0 30px 0 0;
+  font-size: 3rem;
+  margin: 0 30px 0 0;
 }
 
 .current-date {
-    font-size: 1.1rem;
-    margin: 30px 30px 0 0;
+  font-size: 1.1rem;
+  margin: 30px 30px 0 0;
 }
 
-.current-date, .city-name{
-    font-family: Fredoka One;
-    text-align: right;
+.current-date,
+.city-name {
+  font-family: Fredoka One;
+  text-align: right;
 }
 
-
-@media only screen and  (max-width:499px) { 
-    
-    .city-name{
-        font-size: 1.5rem;
-    }
-    .current-date, .city-name {
-        text-align: center;
-        margin: 0;
-    }
-    
+@media only screen and (max-width: 999px) {
+  .city-name {
+    font-size: 1.5rem;
+  }
+  .current-date,
+  .city-name {
+    text-align: center;
+    margin: 0;
+  }
 }
-

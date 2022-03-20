@@ -58,9 +58,7 @@ export function App() {
   return (
     <div className="App">
       <div className="left-side">
-        {!isLoading ? <p>Loading</p> : <p>Loaded</p>}
-
-        <MediaQuery query="(max-width: 499px)">
+        <MediaQuery query="(max-width: 999px)">
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
@@ -77,14 +75,18 @@ export function App() {
         )}
       </div>
       <div className="right-side">
-        <MediaQuery query="(min-width: 500px)">
+        <MediaQuery query="(min-width: 1000px)">
           <CurrentInfo cityName={city} className="current-info" />
           <SearchCityForm
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <WeeklyWeatherList weatherData={data} />
         </MediaQuery>
+        {data.length === 0 ? (
+          <p>loading</p>
+        ) : (
+          <WeeklyWeatherList weatherData={data} />
+        )}
       </div>
     </div>
   );
