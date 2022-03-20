@@ -1,7 +1,7 @@
 import React from "react";
 import "./SingleHourCard.css";
 
-export default function SingleHourCard({ date, src, maxTemp, minTemp }) {
+export default function SingleHourCard({ date, src, temp }) {
   return (
     <div>
       <div className="vertical-single-card">
@@ -9,8 +9,7 @@ export default function SingleHourCard({ date, src, maxTemp, minTemp }) {
         <div className="hour-img-wrapper">
           <img className="hour-image" src={src} alt="forecast" />
         </div>
-        <p className="max-temp">{maxTemp}</p>
-        <p className="min-temp">{minTemp}</p>
+        <p className="temp">{temp}°</p>
       </div>
     </div>
   );

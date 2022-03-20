@@ -1,0 +1,10 @@
+.arrow-container {
+  width: 45px;
+  height: 60px;
+  background: #5a37da;
+  display: flex;
+  position: absolute;
+
+  right: 10px;
+  top: 0;
+}
