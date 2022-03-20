@@ -8,7 +8,6 @@ function GetCityWeather() {
     const result = await fetch(url);
     try {
       const json = await result.json();
-      console.log(json);
       if (json.cod === "404") {
         alert("City Not Found!");
       }
