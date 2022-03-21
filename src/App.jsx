@@ -33,8 +33,6 @@ export function App() {
 
   const searchSetCity = async (e) => {
     e.preventDefault();
-    const c = document.querySelector("#cityName").value;
-    setNewCity(c);
     console.log("newCity : ", newCity);
 
     await axios
@@ -53,6 +51,11 @@ export function App() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const cityOnChange = (e) => {
+    setNewCity(e.target.value);
+    console.log(newCity);
   };
 
   return (
@@ -78,6 +81,7 @@ export function App() {
         <MediaQuery query="(min-width: 1000px)">
           <CurrentInfo cityName={city} className="current-info" />
           <SearchCityForm
+            onChange={cityOnChange}
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
