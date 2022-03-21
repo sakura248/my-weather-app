@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchCityForm.css";
 
-function SearchCityForm({ searchSetCity }) {
+function SearchCityForm({ searchSetCity, onChange }) {
   // const [city, setCity] = useState("");
   // const [query, setQuery] = useState("");
   // const [data, setData] = useState([]);
@@ -40,6 +40,7 @@ function SearchCityForm({ searchSetCity }) {
           name="cityName"
           id="cityName"
           placeholder="Enter a City Name"
+          onChange={onChange}
         />
       </form>
     </div>

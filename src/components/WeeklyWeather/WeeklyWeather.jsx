@@ -14,8 +14,6 @@ function WeeklyWeather({ WeeklyWeatherData }) {
     return convertedDate;
   };
 
-  console.log("WeeklyWeatherData", WeeklyWeatherData);
-
   return (
     <div className="horizontal-card">
       {!WeeklyWeatherData || WeeklyWeatherData.cod === "400" ? (
