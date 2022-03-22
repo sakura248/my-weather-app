@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function GetCityWeather() {
-  const [city, setCity] = useState([]);
+  const [city, setCity] = useState();
 
   const fetchCity = async (lat, long) => {
     const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;

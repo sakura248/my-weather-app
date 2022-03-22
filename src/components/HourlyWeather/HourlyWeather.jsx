@@ -4,6 +4,8 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import React from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 // import ScrollBtn from "./ScrollBtn";
 import SingleHourCard from "./SingleHourCard";
 
@@ -17,11 +19,17 @@ function HourlyWeather({ hourlyWeatherData }) {
 
   return (
     <ScrollContainer ignoreElements="#btn" hideScrollbars="false">
-      <div className="vertical-card">
-        {!hourlyWeatherData || hourlyWeatherData.cod === "400" ? (
-          <p>error</p>
-        ) : (
-          Object.keys(hourlyWeatherData.hourly)
+      {!hourlyWeatherData || hourlyWeatherData.cod === "400" ? (
+        <div className="vertical-card-skeleton">
+          <Skeleton className="vertical-single-card-skeleton" />
+          <Skeleton className="vertical-single-card-skeleton" />
+          <Skeleton className="vertical-single-card-skeleton" />
+          <Skeleton className="vertical-single-card-skeleton" />
+          <Skeleton className="vertical-single-card-skeleton" />
+        </div>
+      ) : (
+        <div className="vertical-card">
+          {Object.keys(hourlyWeatherData.hourly)
             .slice(0, 12)
             .map((key, index) => (
               <SingleHourCard
@@ -34,12 +42,9 @@ function HourlyWeather({ hourlyWeatherData }) {
                 src={`${process.env.PUBLIC_URL}/assets/weather-icons/${hourlyWeatherData.hourly[index].weather[0].icon}.png`}
                 temp={hourlyWeatherData.hourly[index].temp}
               />
-            ))
-        )}
-      </div>
-      {/* {!hourlyWeatherData || hourlyWeatherData.cod === "400" || (
-        <ScrollBtn id="btn" style={{ display: "none" }} />
-      )} */}
+            ))}
+        </div>
+      )}
     </ScrollContainer>
   );
 }

@@ -38,8 +38,28 @@
   margin: 20px;
 }
 
+.vertical-card-skeleton {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.vertical-single-card-skeleton {
+  width: 100px;
+  height: 200px;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 @media only screen and (max-width: 999px) {
   .vertical-card {
+    margin-bottom: 50px;
+    -webkit-overflow-scrolling: touch;
+    justify-content: normal;
+    padding: 20px;
+  }
+
+  .vertical-card-skeleton {
     margin-bottom: 50px;
     -webkit-overflow-scrolling: touch;
     justify-content: normal;
