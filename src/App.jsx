@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import MediaQuery from "react-responsive";
 import GetCityName from "./api/GetCityName";
 import GetCityWeather from "./api/GetCityWeather";
@@ -58,6 +60,8 @@ export function App() {
     console.log(newCity);
   };
 
+  console.log(typeof city);
+
   return (
     <div className="App">
       <div className="left-side">
@@ -66,11 +70,13 @@ export function App() {
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
-          <CurrentInfo cityName={city} className="current-info" />
+          {!city ? (
+            <Skeleton className="city-name-skeleton" />
+          ) : (
+            <CurrentInfo cityName={city} className="current-info" />
+          )}
         </MediaQuery>
-        {data.length === 0 ? (
-          <p>loading</p>
-        ) : (
+        {data.length !== 0 && (
           <>
             <CurrentWeatherDetails weatherData={data} />
             <HourlyWeatherList weatherData={data} />
@@ -79,18 +85,18 @@ export function App() {
       </div>
       <div className="right-side">
         <MediaQuery query="(min-width: 1000px)">
-          <CurrentInfo cityName={city} className="current-info" />
+          {!city ? (
+            <Skeleton className="city-name-skeleton" />
+          ) : (
+            <CurrentInfo cityName={city} className="current-info" />
+          )}
           <SearchCityForm
             onChange={cityOnChange}
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
         </MediaQuery>
-        {data.length === 0 ? (
-          <p>loading</p>
-        ) : (
-          <WeeklyWeatherList weatherData={data} />
-        )}
+        {data.length !== 0 && <WeeklyWeatherList weatherData={data} />}
       </div>
     </div>
   );
