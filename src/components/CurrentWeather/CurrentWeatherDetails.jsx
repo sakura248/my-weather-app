@@ -25,14 +25,8 @@ function CurrentWeatherDetails({ weatherData }) {
     }
   };
 
-  console.log(weatherData);
-
   return (
     <div className="current-info-wrapper">
-      {/* {weatherData.cod === "400" ? (
-        <p>error</p>
-      ) : (
-        <> */}
       <div className="text-info-wrapper">
         <div className="kv-wrapper">
           <div className="current-icon-wrapper">
@@ -145,8 +139,6 @@ function CurrentWeatherDetails({ weatherData }) {
           )}
         </div>
       </div>
-      {/* </>
-      )} */}
     </div>
   );
 }

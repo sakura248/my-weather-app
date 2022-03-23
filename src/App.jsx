@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -35,38 +34,33 @@ export function App() {
 
   const searchSetCity = async (e) => {
     e.preventDefault();
-    console.log("newCity : ", newCity);
+    console.log(newCity);
+    const url = `${process.env.REACT_APP_API_GEO_URL}/geo/1.0/direct?q=${newCity}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
 
-    await axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/weather/?q=${city}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((res) => {
-        if (res.cod === "404") {
-          alert("City Not Found!");
-        }
-        if (res.statusText === "OK") {
-          setSearchedData(res.data);
-          console.log("search city: ", searchedData);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const result = await fetch(url);
+    try {
+      const json = await result.json();
+      console.log(json);
+      console.log(json);
+      if (json.cod === "404") {
+        console.log("city not found");
+      }
+      // setData(json);
+    } catch (err) {
+      console.log(err);
+    }
   };
-
   const cityOnChange = (e) => {
     setNewCity(e.target.value);
     console.log(newCity);
   };
-
-  console.log(typeof city);
 
   return (
     <div className="App">
       <div className="left-side">
         <MediaQuery query="(max-width: 999px)">
           <SearchCityForm
+            onChange={cityOnChange}
             searchSetCity={searchSetCity}
             className="search-city-info"
           />
