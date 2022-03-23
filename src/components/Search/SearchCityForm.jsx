@@ -10,11 +10,9 @@ function SearchCityForm({ searchSetCity, onChange }) {
   //   e.preventDefault();
   //   const newCity = document.querySelector("#cityName").value;
 
-  //   // console.log(newCity)
-  //   setCity(newCity);
   //   axios
   //     .get(
-  //       `${process.env.REACT_APP_API_URL}/weather/?q=${city}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+  //       `${process.env.REACT_APP_API_URL}/geo/1.0/direct?q=${city}&limit=5&appid==${process.env.REACT_APP_API_KEY}`
   //     )
   //     .then((res) => {
   //       if (res.cod === "404") {
@@ -30,6 +28,10 @@ function SearchCityForm({ searchSetCity, onChange }) {
   //       console.log(error);
   //     });
   // };
+
+  // const onChangeCity = (e) => {
+  //   setCity(e.target.value)
+  // }
 
   return (
     <div className="form-wrapper">

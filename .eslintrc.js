@@ -20,5 +20,7 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "react/prop-types": "off",
+    "no-console": "off",
+    "no-alert": "off",
   },
 };
