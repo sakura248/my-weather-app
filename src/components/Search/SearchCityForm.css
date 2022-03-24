@@ -13,6 +13,32 @@
   display: block;
 }
 
+.city-ul {
+  list-style: none;
+  background-color: #ffffff;
+  margin: 10px 30px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.city-li {
+  border-radius: 20px;
+}
+
+.city-li:hover {
+  background-color: #ebebeb;
+}
+
+.city-btn {
+  background-color: transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: left;
+}
+
 @media only screen and (max-width: 999px) {
   .search-input {
     background: #f8f3ea;

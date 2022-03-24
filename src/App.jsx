@@ -16,13 +16,15 @@ import WeeklyWeatherList from "./components/WeeklyWeather/WeeklyWeatherList";
 export const GeoContext = createContext();
 
 export function App() {
-  const [searchedData, setSearchedData] = useState([]);
   const [newCity, setNewCity] = useState("");
+  const [inputCity, setInputCity] = useState("");
 
-  const [isLoading, setIsloading] = useState(false);
   const { fetchCity, city } = GetCityName();
   const { fetchData, data } = GetCityWeather();
   const location = GetLocation();
+
+  const [showList, setShowList] = useState(false);
+  const [cityList, setCityList] = useState([]);
 
   useEffect(() => {
     const firstGetCity = async () => {
@@ -32,28 +34,40 @@ export function App() {
     firstGetCity();
   }, [location]);
 
-  const searchSetCity = async (e) => {
-    e.preventDefault();
-    console.log(newCity);
-    const url = `${process.env.REACT_APP_API_GEO_URL}/geo/1.0/direct?q=${newCity}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
+  const cityOnChange = async (e) => {
+    setInputCity(e.target.value);
+    console.log(e.target.value);
+    setShowList(true);
 
-    const result = await fetch(url);
-    try {
-      const json = await result.json();
-      console.log(json);
-      console.log(json);
-      if (json.cod === "404") {
-        console.log("city not found");
+    const fetchList = async () => {
+      const url = `${process.env.REACT_APP_API_GEO_URL}/direct?q=${e.target.value}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
+      const result = await fetch(url);
+      try {
+        const json = await result.json();
+        setCityList(json);
+        console.log(json);
+        if (json.cod === "404") {
+          console.log("city not found");
+        }
+        return json;
+      } catch (err) {
+        console.log(err);
+        setCityList([{ test: "test" }]);
       }
-      // setData(json);
-    } catch (err) {
-      console.log(err);
-    }
+      return [];
+    };
+    const result = await fetchList();
+    setCityList(result);
   };
-  const cityOnChange = (e) => {
-    setNewCity(e.target.value);
-    console.log(newCity);
-  };
+
+  useEffect(() => {
+    const secondGetCity = async () => {
+      console.log("second get");
+      await fetchCity(newCity.lat, newCity.lon);
+      await fetchData(newCity.lat, newCity.lon);
+    };
+    secondGetCity();
+  }, [newCity]);
 
   return (
     <div className="App">
@@ -61,8 +75,13 @@ export function App() {
         <MediaQuery query="(max-width: 999px)">
           <SearchCityForm
             onChange={cityOnChange}
-            searchSetCity={searchSetCity}
             className="search-city-info"
+            showList={showList}
+            cityList={cityList}
+            setInputCity={setInputCity}
+            value={inputCity}
+            setNewCity={setNewCity}
+            setShowList={setShowList}
           />
           {!city ? (
             <Skeleton className="city-name-skeleton" />
@@ -86,8 +105,11 @@ export function App() {
           )}
           <SearchCityForm
             onChange={cityOnChange}
-            searchSetCity={searchSetCity}
             className="search-city-info"
+            showList={showList}
+            cityList={cityList}
+            setInputCity={setInputCity}
+            value={inputCity}
           />
         </MediaQuery>
         {data.length !== 0 && <WeeklyWeatherList weatherData={data} />}

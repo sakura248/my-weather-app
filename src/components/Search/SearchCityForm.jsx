@@ -1,41 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./SearchCityForm.css";
 
-function SearchCityForm({ searchSetCity, onChange }) {
-  // const [city, setCity] = useState("");
-  // const [query, setQuery] = useState("");
-  // const [data, setData] = useState([]);
+function SearchCityForm({
+  onChange,
+  showList,
+  cityList,
+  setNewCity,
+  setShowList,
+}) {
+  const inputRef = useRef();
 
-  // const searchSetCity = (e) => {
-  //   e.preventDefault();
-  //   const newCity = document.querySelector("#cityName").value;
-
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_API_URL}/geo/1.0/direct?q=${city}&limit=5&appid==${process.env.REACT_APP_API_KEY}`
-  //     )
-  //     .then((res) => {
-  //       if (res.cod === "404") {
-  //         alert("City Not Found!");
-  //       }
-  //       if (res.statusText === "OK") {
-  //         setData(res.data);
-  //         console.log("search city: ", data);
-  //         setQuery("");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // const onChangeCity = (e) => {
-  //   setCity(e.target.value)
-  // }
+  const onSelect = (item) => {
+    setNewCity(item);
+    setShowList(false);
+    inputRef.current.value = "";
+  };
 
   return (
     <div className="form-wrapper">
-      <form className="search-form" onSubmit={searchSetCity}>
+      <form className="search-form">
         <input
           className="search-input"
           type="text"
@@ -43,8 +26,27 @@ function SearchCityForm({ searchSetCity, onChange }) {
           id="cityName"
           placeholder="Enter a City Name"
           onChange={onChange}
+          // value={valueTxt}
+          ref={inputRef}
         />
       </form>
+      {showList && (
+        <ul className="city-ul">
+          {Object.keys(cityList).map((key, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <li className="city-li" key={index}>
+              <button
+                onClick={() => onSelect(cityList[index])}
+                type="button"
+                className="city-btn"
+              >
+                {cityList[index].name}&#44;&nbsp;{cityList[index].state}&nbsp;
+                {cityList[index].country}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

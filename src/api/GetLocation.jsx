@@ -6,8 +6,6 @@ const GetLocation = () => {
     long: "",
   });
   useEffect(() => {
-    // async function fetchLocation() {
-    // await
     navigator.geolocation.getCurrentPosition((position) => {
       const currentLat = position.coords.latitude;
       const currentLong = position.coords.longitude;
@@ -16,10 +14,7 @@ const GetLocation = () => {
         lat: currentLat,
         long: currentLong,
       });
-      console.log("hellooooo");
     });
-    // }
-    // fetchLocation();
   }, []);
 
   return location;

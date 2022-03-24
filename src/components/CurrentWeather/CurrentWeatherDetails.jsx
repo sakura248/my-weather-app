@@ -11,18 +11,19 @@ function CurrentWeatherDetails({ weatherData }) {
   };
 
   const HandleOutfit = (temp) => {
-    switch (temp) {
-      case temp >= 25:
-        return "t-shirt";
-      case temp > 19 && temp < 25:
-        return "long-sleeve";
-      case temp > 15 && temp >= 11:
-        return "jacket";
-      case temp > 11 && temp < 15:
-        return "knit";
-      default:
-        return "coat";
+    let outfit = "";
+    if (temp >= 25) {
+      outfit = "t-shirt";
+    } else if (temp >= 19) {
+      outfit = "long-sleeve";
+    } else if (temp >= 15) {
+      outfit = "jacket";
+    } else if (temp >= 11) {
+      outfit = "knit";
+    } else {
+      outfit = "coat";
     }
+    return outfit;
   };
 
   return (
