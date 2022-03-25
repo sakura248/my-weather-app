@@ -30,7 +30,7 @@ function SearchCityForm({
           ref={inputRef}
         />
       </form>
-      {showList && (
+      {showList && cityList ? (
         <ul className="city-ul">
           {Object.keys(cityList).map((key, index) => (
             // eslint-disable-next-line react/no-array-index-key
@@ -46,6 +46,8 @@ function SearchCityForm({
             </li>
           ))}
         </ul>
+      ) : (
+        <p />
       )}
     </div>
   );

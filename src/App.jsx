@@ -35,8 +35,7 @@ export function App() {
   }, [location]);
 
   const cityOnChange = async (e) => {
-    setInputCity(e.target.value);
-    console.log(e.target.value);
+    setInputCity("abc");
     setShowList(true);
 
     const fetchList = async () => {
@@ -44,15 +43,12 @@ export function App() {
       const result = await fetch(url);
       try {
         const json = await result.json();
-        setCityList(json);
-        console.log(json);
-        if (json.cod === "404") {
-          console.log("city not found");
+        if (json) {
+          setCityList(json);
         }
         return json;
       } catch (err) {
         console.log(err);
-        setCityList([{ test: "test" }]);
       }
       return [];
     };
@@ -62,7 +58,6 @@ export function App() {
 
   useEffect(() => {
     const secondGetCity = async () => {
-      console.log("second get");
       await fetchCity(newCity.lat, newCity.lon);
       await fetchData(newCity.lat, newCity.lon);
     };
