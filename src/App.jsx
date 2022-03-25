@@ -34,14 +34,11 @@ export function App() {
 
   const searchSetCity = async (e) => {
     e.preventDefault();
-    console.log(newCity);
     const url = `${process.env.REACT_APP_API_GEO_URL}/geo/1.0/direct?q=${newCity}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
 
     const result = await fetch(url);
     try {
       const json = await result.json();
-      console.log(json);
-      console.log(json);
       if (json.cod === "404") {
         console.log("city not found");
       }
@@ -52,7 +49,6 @@ export function App() {
   };
   const cityOnChange = (e) => {
     setNewCity(e.target.value);
-    console.log(newCity);
   };
 
   return (
