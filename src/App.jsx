@@ -35,11 +35,13 @@ export function App() {
   }, [location]);
 
   const cityOnChange = async (e) => {
-    setInputCity("abc");
+    setInputCity(e.target.value);
+    // console.log(in)
+    const searchValue = e.target.value;
     setShowList(true);
 
     const fetchList = async () => {
-      const url = `${process.env.REACT_APP_API_GEO_URL}/direct?q=${e.target.value}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
+      const url = `${process.env.REACT_APP_API_GEO_URL}/direct?q=${searchValue}&limit=5&appid=${process.env.REACT_APP_API_KEY}`;
       const result = await fetch(url);
       try {
         const json = await result.json();
