@@ -11,13 +11,9 @@ Of course, you can change the location.
 ## Technologies
 
 - React
-- Firebase Authentification
-- Firebase Firestore Database
-- The Movie Database (TMDB) API
-- Tailwind CSS
-- Prettier
+- OpenWeatherAPI
+- CSS3
 - ESlint
-- Iconmonster
 - Figma
 
 ## Features
