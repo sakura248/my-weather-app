@@ -1,6 +1,8 @@
-# Favorite Quotes
+# What to Wear
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8f86fbe6-be2a-46b1-8c0a-b122ec6865e2/deploy-status)](https://app.netlify.com/sites/serene-haibt-90ec6e/deploys)  
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8f86fbe6-be2a-46b1-8c0a-b122ec6865e2/deploy-status)](https://app.netlify.com/sites/serene-haibt-90ec6e/deploys) 🚀
+[VIEW LIVE](https://serene-haibt-90ec6e.netlify.app/) 🚀  
+
 
 ## Description
 
@@ -11,13 +13,9 @@ Of course, you can change the location.
 ## Technologies
 
 - React
-- Firebase Authentification
-- Firebase Firestore Database
-- The Movie Database (TMDB) API
-- Tailwind CSS
-- Prettier
+- OpenWeatherAPI
+- CSS3
 - ESlint
-- Iconmonster
 - Figma
 
 ## Features
