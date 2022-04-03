@@ -16,8 +16,6 @@ function SearchCityForm({
     inputRef.current.value = "";
   };
 
-  console.log(cityList);
-
   return (
     <div className="form-wrapper">
       <form className="search-form">

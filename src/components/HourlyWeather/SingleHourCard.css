@@ -32,6 +32,7 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .indiana-scroll-container {
@@ -49,6 +50,7 @@
   margin: 5px;
   border-radius: 20px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 @media only screen and (max-width: 999px) {
