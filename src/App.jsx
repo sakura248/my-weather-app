@@ -54,7 +54,6 @@ export function App() {
     };
     const result = await fetchList();
     setCityList(result);
-
   };
 
   useEffect(() => {
