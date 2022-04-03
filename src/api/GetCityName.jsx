@@ -4,7 +4,6 @@ function GetCityWeather() {
   const [city, setCity] = useState();
 
   const fetchCity = async (lat, long) => {
-    console.log(lat, long);
     const url = `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
     const result = await fetch(url);
     try {

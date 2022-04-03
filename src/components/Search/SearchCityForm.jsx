@@ -16,6 +16,8 @@ function SearchCityForm({
     inputRef.current.value = "";
   };
 
+  console.log(cityList);
+
   return (
     <div className="form-wrapper">
       <form className="search-form">
@@ -26,15 +28,13 @@ function SearchCityForm({
           id="cityName"
           placeholder="Enter a City Name"
           onChange={onChange}
-          // value={valueTxt}
           ref={inputRef}
         />
       </form>
-      {showList && cityList ? (
+      {cityList.cod !== "400" && cityList && showList ? (
         <ul className="city-ul">
           {Object.keys(cityList).map((key, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li className="city-li" key={index}>
+            <li className="city-li" key={cityList[index].lat}>
               <button
                 onClick={() => onSelect(cityList[index])}
                 type="button"

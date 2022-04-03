@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import * as dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
@@ -6,7 +5,6 @@ import React from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-// import ScrollBtn from "./ScrollBtn";
 import SingleHourCard from "./SingleHourCard";
 
 function HourlyWeather({ hourlyWeatherData }) {

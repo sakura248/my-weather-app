@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -36,7 +35,6 @@ export function App() {
 
   const cityOnChange = async (e) => {
     setInputCity(e.target.value);
-    // console.log(in)
     const searchValue = e.target.value;
     setShowList(true);
 
@@ -107,6 +105,8 @@ export function App() {
             cityList={cityList}
             setInputCity={setInputCity}
             value={inputCity}
+            setNewCity={setNewCity}
+            setShowList={setShowList}
           />
         </MediaQuery>
         {data.length !== 0 && <WeeklyWeatherList weatherData={data} />}
