@@ -1,6 +1,6 @@
 # What to Wear
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8f86fbe6-be2a-46b1-8c0a-b122ec6865e2/deploy-status)](https://app.netlify.com/sites/serene-haibt-90ec6e/deploys) 🚀
+[VIEW LIVE](https://serene-haibt-90ec6e.netlify.app/) 🚀
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8f86fbe6-be2a-46b1-8c0a-b122ec6865e2/deploy-status)](https://app.netlify.com/sites/serene-haibt-90ec6e/deploys)
 
 ## Description
 
