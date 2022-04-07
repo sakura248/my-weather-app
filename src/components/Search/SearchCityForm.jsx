@@ -10,6 +10,10 @@ function SearchCityForm({
 }) {
   const inputRef = useRef();
 
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+  };
+
   const onSelect = (item) => {
     setNewCity(item);
     setShowList(false);
@@ -18,7 +22,7 @@ function SearchCityForm({
 
   return (
     <div className="form-wrapper">
-      <form className="search-form">
+      <form className="search-form" onSubmit={onSubmitForm}>
         <input
           className="search-input"
           type="text"
