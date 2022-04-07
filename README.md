@@ -7,7 +7,7 @@
 ## Description
 
 Have you ever wondered what to wear for the temperature? Here is the solution!
-This app suggests what kind of cloth to wear in your area in real time. You can also check hourly and weekly forecast.
+This app suggests what kind of cloth to wear in your area in real-time. You can also check the hourly and weekly forecast.
 Of course, you can change the location.
 
 ## Technologies
